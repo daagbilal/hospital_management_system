@@ -46,16 +46,45 @@ namespace hastane_yonetim_sistemi
                 comboBox1.Items.Add(dr2[0]);
             }
 
-            //SqlCommand cmd3 = new SqlCommand("Select DoktorAd, DoktorSoyad From Tbl_Doktorlar Whe", conn.baglanti());
-            //SqlDataReader dr3 = cmd3.ExecuteReader();
-            //while (dr3.Read())
-            //{
-            //    comboBox2.Items.Add(dr3[0]);
-            //}
-
             conn.baglanti().Close();
 
 
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBox2.Items.Clear();
+            SqlCommand cmd3 = new SqlCommand("Select DoktorAd, DoktorSoyad From Tbl_Doktorlar Where DoktorBrans = @p1", conn.baglanti());
+            cmd3.Parameters.AddWithValue("@p1", comboBox1.Text);
+            SqlDataReader dr3 = cmd3.ExecuteReader();
+            while (dr3.Read())
+            {
+                comboBox2.Items.Add(dr3[0] + " " + dr3[1]);
+            }
+
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter("Select * From Tbl_Randevular Where RandevuBrans = '" + comboBox1.Text + "'", conn.baglanti());
+            da.Fill(dt);
+            dataGridView2.DataSource = dt;
+
+            conn.baglanti().Close();
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataTable dt2 = new DataTable();
+            SqlDataAdapter da2 = new SqlDataAdapter("Select * From Tbl_Randevular Where RandevuBrans = '" + comboBox1.Text + "' and RandevuDoktor = '" + comboBox2.Text + "'", conn.baglanti());
+            da2.Fill(dt2);
+            dataGridView2.DataSource = dt2;
+
+            conn.baglanti().Close();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FrmHastaBilgiDuzenle frm = new FrmHastaBilgiDuzenle();
+            frm.hasta_tc = tc;
+            frm.Show();
         }
     }
 }
