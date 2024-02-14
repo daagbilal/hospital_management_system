@@ -70,7 +70,7 @@ namespace hastane_yonetim_sistemi
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SqlCommand cmd = new SqlCommand("Insert Into Tbl_Duyurular () Values ()");
+            
         }
 
     }
