@@ -207,6 +207,7 @@
             this.button4.TabIndex = 15;
             this.button4.Text = "Kaydet";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -254,16 +255,20 @@
             // maskedTextBox2
             // 
             this.maskedTextBox2.Location = new System.Drawing.Point(147, 141);
+            this.maskedTextBox2.Mask = "00:00";
             this.maskedTextBox2.Name = "maskedTextBox2";
             this.maskedTextBox2.Size = new System.Drawing.Size(121, 28);
             this.maskedTextBox2.TabIndex = 9;
+            this.maskedTextBox2.ValidatingType = typeof(System.DateTime);
             // 
             // maskedTextBox1
             // 
             this.maskedTextBox1.Location = new System.Drawing.Point(147, 99);
+            this.maskedTextBox1.Mask = "00/00/0000";
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.Size = new System.Drawing.Size(121, 28);
             this.maskedTextBox1.TabIndex = 8;
+            this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
             // 
             // textBox1
             // 
@@ -416,6 +421,7 @@
             this.button5.TabIndex = 16;
             this.button5.Text = "Doktor Paneli";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // FrmSekreterDetay
             // 

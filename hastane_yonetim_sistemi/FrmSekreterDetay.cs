@@ -70,8 +70,29 @@ namespace hastane_yonetim_sistemi
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            SqlCommand cmd = new SqlCommand("Insert Into Tbl_Duyurular (Duyuru) Values (@p1)", conn.baglanti());
+            cmd.Parameters.AddWithValue("@p1", richTextBox1.Text);
+            cmd.ExecuteNonQuery();
+            conn.baglanti().Close();
+            MessageBox.Show("Duyuru Oluşturuldu.", "Bilgi", MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            SqlCommand cmd = new SqlCommand("Insert Into Tbl_Randevular (RandevuTarih, RandevuSaat, RandevuBrans, RandevuDoktor) Values (@p1, @p2, @p3, @p4)", conn.baglanti());
+            cmd.Parameters.AddWithValue("@p1",maskedTextBox1.Text);
+            cmd.Parameters.AddWithValue("@p2", maskedTextBox2.Text);
+            cmd.Parameters.AddWithValue("@p3", comboBox1.Text);
+            cmd.Parameters.AddWithValue("@p4", comboBox2.Text);
+            cmd.ExecuteNonQuery();
+            conn.baglanti().Close();
+            MessageBox.Show("Randevu Oluşturuldu.","Bilgi",MessageBoxButtons.OK,MessageBoxIcon.Information);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            FrmDoktorPanel frm = new FrmDoktorPanel();
+            frm.Show();
+        }
     }
 }
