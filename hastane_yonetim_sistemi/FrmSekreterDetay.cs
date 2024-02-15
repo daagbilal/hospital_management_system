@@ -25,6 +25,7 @@ namespace hastane_yonetim_sistemi
         private void FrmSekreterDetay_Load(object sender, EventArgs e)
         {
             label3.Text = tc;
+
             SqlCommand cmd = new SqlCommand("Select SekreterAdSoyad From Tbl_Sekreter Where SekreterTC = @p1", conn.baglanti());
             cmd.Parameters.AddWithValue("@p1", tc);
             SqlDataReader dr = cmd.ExecuteReader();
@@ -86,12 +87,24 @@ namespace hastane_yonetim_sistemi
             cmd.Parameters.AddWithValue("@p4", comboBox2.Text);
             cmd.ExecuteNonQuery();
             conn.baglanti().Close();
-            MessageBox.Show("Randevu Oluşturuldu.","Bilgi",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            MessageBox.Show("Randevu oluşturuldu.","Bilgi",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             FrmDoktorPanel frm = new FrmDoktorPanel();
+            frm.Show();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            FrmBransPanel frm = new FrmBransPanel();
+            frm.Show();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            FrmRandevular frm = new FrmRandevular();
             frm.Show();
         }
     }

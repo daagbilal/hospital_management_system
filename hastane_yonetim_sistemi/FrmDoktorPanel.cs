@@ -46,10 +46,6 @@ namespace hastane_yonetim_sistemi
             cmd.ExecuteNonQuery();
             conn.baglanti().Close();
             MessageBox.Show("Doktor bilgisi kaydedildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
-
-
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -60,6 +56,28 @@ namespace hastane_yonetim_sistemi
             comboBox1.Text = dataGridView1.Rows[selected].Cells[3].Value.ToString();
             maskedTextBox1.Text = dataGridView1.Rows[selected].Cells[4].Value.ToString();
             textBox5.Text = dataGridView1.Rows[selected].Cells[5].Value.ToString();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            SqlCommand cmd = new SqlCommand("Update Tbl_Doktorlar Set DoktorAd = @p1, DoktorSoyad = @p2, DoktorBrans = @p3, DoktorSifre = @p4 Where DoktorTC = @p5", conn.baglanti());
+            cmd.Parameters.AddWithValue("@p1", textBox2.Text);
+            cmd.Parameters.AddWithValue("@p2", textBox3.Text);
+            cmd.Parameters.AddWithValue("@p3", comboBox1.Text);
+            cmd.Parameters.AddWithValue("@p4", textBox5.Text);
+            cmd.Parameters.AddWithValue("@p5", maskedTextBox1.Text);
+            cmd.ExecuteNonQuery();
+            conn.baglanti().Close();
+            MessageBox.Show("Doktor bilgileri güncellendi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            SqlCommand cmd = new SqlCommand("Delete From Tbl_Doktorlar Where DoktorTC = @p1", conn.baglanti());
+            cmd.Parameters.AddWithValue("@p1", maskedTextBox1.Text);
+            cmd.ExecuteNonQuery();
+            conn.baglanti().Close();
+            MessageBox.Show("Doktor başarıyla silindi.","Bilgi",MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

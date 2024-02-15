@@ -190,6 +190,7 @@
             this.button2.TabIndex = 24;
             this.button2.Text = "Sil";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -199,6 +200,7 @@
             this.button3.TabIndex = 25;
             this.button3.Text = "Güncelle";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // FrmDoktorPanel
             // 
@@ -228,7 +230,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "FrmDoktorPanel";
-            this.Text = "FrmDoktorPanel";
+            this.Text = "Doktor Düzenleme";
             this.Load += new System.EventHandler(this.FrmDoktorPanel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

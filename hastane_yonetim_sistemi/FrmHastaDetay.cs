@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace hastane_yonetim_sistemi
 {
@@ -35,7 +36,7 @@ namespace hastane_yonetim_sistemi
             
             // RAndevu Geçmişi
             DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter("Select * From Tbl_Randevular Where HastaTC =" + tc, conn.baglanti());
+            SqlDataAdapter da = new SqlDataAdapter("Select * From Tbl_Randevular Where HastaTC =" + tc + "And RandevuDurum = 1", conn.baglanti());
             da.Fill(dt);
             dataGridView1.DataSource = dt;
             // Branş ve Doktor Çekme
@@ -63,7 +64,7 @@ namespace hastane_yonetim_sistemi
             }
 
             DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter("Select * From Tbl_Randevular Where RandevuBrans = '" + comboBox1.Text + "'", conn.baglanti());
+            SqlDataAdapter da = new SqlDataAdapter("Select * From Tbl_Randevular Where RandevuBrans = '" + comboBox1.Text + "' And RandevuDurum = 0", conn.baglanti());
             da.Fill(dt);
             dataGridView2.DataSource = dt;
 
@@ -73,7 +74,7 @@ namespace hastane_yonetim_sistemi
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             DataTable dt2 = new DataTable();
-            SqlDataAdapter da2 = new SqlDataAdapter("Select * From Tbl_Randevular Where RandevuBrans = '" + comboBox1.Text + "' and RandevuDoktor = '" + comboBox2.Text + "'", conn.baglanti());
+            SqlDataAdapter da2 = new SqlDataAdapter("Select * From Tbl_Randevular Where RandevuBrans = '" + comboBox1.Text + "' And RandevuDoktor = '" + comboBox2.Text + "' And RandevuDurum = 0", conn.baglanti());
             da2.Fill(dt2);
             dataGridView2.DataSource = dt2;
 
@@ -85,6 +86,22 @@ namespace hastane_yonetim_sistemi
             FrmHastaBilgiDuzenle frm = new FrmHastaBilgiDuzenle();
             frm.hasta_tc = tc;
             frm.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SqlCommand cmd = new SqlCommand("Update Tbl_Randevular Set RandevuDurum = 1, HastaTC = @p1 Where Randevuid = @p2", conn.baglanti());
+            cmd.Parameters.AddWithValue("@p1", tc);
+            cmd.Parameters.AddWithValue("@p2", textBox1.Text);
+            cmd.ExecuteNonQuery();
+            conn.baglanti().Close();
+            MessageBox.Show("Randevunuz alındı.","Bilgi",MessageBoxButtons.OK,MessageBoxIcon.Information);
+
+        }
+
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
