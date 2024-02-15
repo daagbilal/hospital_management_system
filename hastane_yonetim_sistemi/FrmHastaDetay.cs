@@ -87,9 +87,15 @@ namespace hastane_yonetim_sistemi
             frm.hasta_tc = tc;
             frm.Show();
         }
+        
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
+
             SqlCommand cmd = new SqlCommand("Update Tbl_Randevular Set RandevuDurum = 1, HastaTC = @p1 Where Randevuid = @p2", conn.baglanti());
             cmd.Parameters.AddWithValue("@p1", tc);
             cmd.Parameters.AddWithValue("@p2", textBox1.Text);
@@ -97,11 +103,10 @@ namespace hastane_yonetim_sistemi
             conn.baglanti().Close();
             MessageBox.Show("Randevunuz alındı.","Bilgi",MessageBoxButtons.OK,MessageBoxIcon.Information);
 
-        }
-
-        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
+            
+            conn.baglanti().Close();
 
         }
+
     }
 }

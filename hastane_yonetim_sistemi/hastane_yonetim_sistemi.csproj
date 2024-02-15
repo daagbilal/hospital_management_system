@@ -52,17 +52,17 @@
     <Compile Include="FrmBransPanel.Designer.cs">
       <DependentUpon>FrmBransPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmDoktorBilgiDuzenle.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmDoktorBilgiDuzenle.Designer.cs">
-      <DependentUpon>FrmDoktorBilgiDuzenle.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmDoktorPanel.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmDoktorPanel.Designer.cs">
       <DependentUpon>FrmDoktorPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDuyurular.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDuyurular.Designer.cs">
+      <DependentUpon>FrmDuyurular.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmHastaBilgiDuzenle.cs">
       <SubType>Form</SubType>
@@ -130,11 +130,11 @@
     <EmbeddedResource Include="FrmBransPanel.resx">
       <DependentUpon>FrmBransPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmDoktorBilgiDuzenle.resx">
-      <DependentUpon>FrmDoktorBilgiDuzenle.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmDoktorPanel.resx">
       <DependentUpon>FrmDoktorPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDuyurular.resx">
+      <DependentUpon>FrmDuyurular.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmHastaBilgiDuzenle.resx">
       <DependentUpon>FrmHastaBilgiDuzenle.cs</DependentUpon>
