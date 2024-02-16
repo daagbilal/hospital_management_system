@@ -113,5 +113,10 @@ namespace hastane_yonetim_sistemi
             FrmDuyurular frm = new FrmDuyurular();
             frm.Show();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

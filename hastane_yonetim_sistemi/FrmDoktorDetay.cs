@@ -66,5 +66,10 @@ namespace hastane_yonetim_sistemi
             richTextBox1.AppendText("Hasta TC No: " + hastaTc + "\n");
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

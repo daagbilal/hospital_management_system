@@ -90,7 +90,8 @@ namespace hastane_yonetim_sistemi
         
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+            int selected = dataGridView2.SelectedCells[0].RowIndex;
+            textBox1.Text = dataGridView2.Rows[selected].Cells[0].Value.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -108,5 +109,9 @@ namespace hastane_yonetim_sistemi
 
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
