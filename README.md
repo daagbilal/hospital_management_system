@@ -1,0 +1,1 @@
+The Hospital Management System is a desktop automation system where patients can register and make appointments, doctors can see and manage these appointments, and secretaries can manage doctors and branches.
